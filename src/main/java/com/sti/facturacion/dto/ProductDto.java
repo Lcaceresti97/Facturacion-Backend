@@ -24,7 +24,7 @@ import java.util.List;
 public class ProductDto {
 
     @JsonProperty("id_product")
-    private Integer productId;
+    private String productId;
 
     @JsonProperty("product_name")
     @NotBlank
@@ -34,14 +34,14 @@ public class ProductDto {
 
     @JsonProperty("stock")
     @Positive
-    @NotBlank
+    @NotNull
     private Integer productStock;
 
     @JsonProperty("status")
     private ModelStatus productStatus;
 
    // @JsonProperty("productInvoiceDetails")
-    //@Builder.Default
-    //private List<InvoiceDetails> productInvoiceDetails = new ArrayList<>();
+//@Builder.Default
+//private List<InvoiceDetails> productInvoiceDetails = new ArrayList<>();
 
 }

@@ -25,7 +25,5 @@ public interface ProductRepository extends JpaRepository<Product, String> {
      */
     Optional<Product> findByProductName(String productName);
 
-    @Query(value = "SELECT * FROM t_invoice_detail i INNER JOIN t_products p ON i.id_product=p.id_product WHERE p.product_name like %:search%" , nativeQuery = true)
-    Page<Product> findInvoiceDetailsByProduct(String search, Pageable pageable);
 
 }

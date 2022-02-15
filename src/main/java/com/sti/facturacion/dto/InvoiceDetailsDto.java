@@ -23,7 +23,7 @@ import java.util.List;
 public class InvoiceDetailsDto {
 
     @JsonProperty("id_invoice_detail")
-    private Integer invoiceDetailId;
+    private String invoiceDetailId;
 
     @JsonProperty("invoice")
     private Invoice invoice;

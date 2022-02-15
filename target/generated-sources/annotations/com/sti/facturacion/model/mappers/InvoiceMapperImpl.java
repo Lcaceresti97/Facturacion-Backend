@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-02-10T15:45:53-0600",
+    date = "2022-02-15T15:40:45-0600",
     comments = "version: 1.4.1.Final, compiler: javac, environment: Java 11.0.13 (Oracle Corporation)"
 )
 @Component
@@ -27,6 +27,7 @@ public class InvoiceMapperImpl implements InvoiceMapper {
         invoice.setCustomer( dto.getCustomer() );
         invoice.setInvoiceStatus( dto.getInvoiceStatus() );
         invoice.setInvoiceCode( dto.getInvoiceCode() );
+        invoice.setRegistDateInvoice( dto.getRegistDateInvoice() );
 
         return invoice;
     }
@@ -41,6 +42,7 @@ public class InvoiceMapperImpl implements InvoiceMapper {
 
         invoiceDto.invoiceId( invoice.getInvoiceId() );
         invoiceDto.invoiceCode( invoice.getInvoiceCode() );
+        invoiceDto.registDateInvoice( invoice.getRegistDateInvoice() );
         invoiceDto.customer( invoice.getCustomer() );
         invoiceDto.invoiceStatus( invoice.getInvoiceStatus() );
 

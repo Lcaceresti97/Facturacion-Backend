@@ -101,4 +101,27 @@ public class CustomerController {
                 .buildResponseEntity(HttpStatus.CREATED, "Customer saved successfully", savedCustomer);
     }
 
+    /**
+     * Handler method for deleting a Customer by its ID.
+     * @param customerId String
+     * @return Response null
+     */
+    @Operation(description = "Delete a customer by its ID.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Customer deleted successfully."
+                    , content = { @Content(mediaType = MediaType.APPLICATION_JSON_VALUE
+                    , schema = @Schema(implementation =  String.class))})
+            , @ApiResponse(responseCode = "404", description = "Customer not found"
+            , content = { @Content(schema = @Schema(implementation = ErrorResponse.class))})
+    })
+    @DeleteMapping(value = "/{customerId}")
+    public ResponseEntity<? extends Response<String>> deleteCustomer(@PathVariable final String customerId) {
+        customerService.deleteCustomerById(customerId);
+        BaseResponse<String> customerResponse = new BaseResponse<>();
+        return customerResponse
+                .buildResponseEntity(HttpStatus.OK, new StringBuilder("Customer with ID: ")
+                        .append(customerId)
+                        .append(" was deleted.").toString(), customerId);
+    }
+
 }

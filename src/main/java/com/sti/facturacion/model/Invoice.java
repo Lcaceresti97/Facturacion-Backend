@@ -21,6 +21,7 @@ import java.util.UUID;
 public class Invoice {
 
     @Id
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_invoice", nullable = false, unique = true, length = 64)
     private String invoiceId;
 

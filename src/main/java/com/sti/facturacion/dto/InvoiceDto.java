@@ -44,4 +44,11 @@ public class InvoiceDto {
     @JsonProperty("status")
     private ModelStatus invoiceStatus;
 
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 }
