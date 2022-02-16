@@ -2,6 +2,7 @@ package com.sti.facturacion.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.sti.facturacion.model.Invoice;
 import com.sti.facturacion.model.InvoiceDetails;
@@ -27,23 +28,10 @@ public class InvoiceDetailsDto {
     @JsonProperty("id_invoice_detail")
     private String invoiceDetailId;
 
-    @JsonIgnore
-    @JsonProperty("invoice")
-    private Invoice invoice;
-
-    @JsonIgnore
-    @JsonProperty("product")
-    private Product product;
-
     @JsonProperty(required = true)
     @Positive
     @NotNull
     private Integer invoiceDetailAmount;
-
-    @JsonProperty(required = true)
-    @Positive
-    @NotNull
-    private Double invoiceDetailPrice;
 
     @JsonProperty(required = true)
     @Positive
@@ -68,7 +56,7 @@ public class InvoiceDetailsDto {
     @JsonProperty("status")
     private ModelStatus invoiceDetailStatus;
 
-    @JsonProperty("invoiceDetails")
-    @Builder.Default
-    private List<InvoiceDetails> invoiceDetails = new ArrayList<>();
+    @JsonProperty("invoiceDetailsProduct")
+    private List<Product> invoiceDetailsProduct = new ArrayList<>();
+
 }

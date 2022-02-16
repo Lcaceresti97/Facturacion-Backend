@@ -3,6 +3,7 @@ package com.sti.facturacion.model;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sti.facturacion.model.status.ModelStatus;
 import lombok.*;
@@ -49,11 +50,13 @@ public class Invoice {
         this.invoiceDetailsList = invoiceDetailsList;
     }
 
+    @JsonIgnore
     @JsonBackReference
     public Customer getCustomer() {
         return customer;
     }
 
+    @JsonIgnore
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }

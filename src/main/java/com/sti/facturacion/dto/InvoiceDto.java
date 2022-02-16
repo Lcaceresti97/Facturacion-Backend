@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.sti.facturacion.model.Customer;
-import com.sti.facturacion.model.Invoice;
 import com.sti.facturacion.model.InvoiceDetails;
 import com.sti.facturacion.model.status.ModelStatus;
 import lombok.*;
@@ -13,7 +12,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.*;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 

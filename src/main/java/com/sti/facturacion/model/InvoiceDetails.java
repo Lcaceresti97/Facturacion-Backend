@@ -30,16 +30,8 @@ public class InvoiceDetails {
     @JoinColumn(name = "id_invoice")
     private Invoice invoice;
 
-    @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_product")
-    private Product product;
-
     @Column(name= "amount", nullable = false)
     private Integer invoiceDetailAmount;
-
-    @Column(name = "price", nullable = false)
-    private Double invoiceDetailPrice;
 
     @Column(name = "total_parcial", nullable = false)
     private Double invoiceDetailTotalParcial;
@@ -57,25 +49,10 @@ public class InvoiceDetails {
     @Enumerated(EnumType.ORDINAL)
     private ModelStatus invoiceDetailStatus;
 
-    @JsonIgnore
-    @JsonBackReference
-    public Invoice getInvoice() {
-        return invoice;
-    }
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_product")
+    private Product product;
 
-    public void setInvoice(Invoice invoice) {
-        this.invoice = invoice;
-    }
-
-    @JsonIgnore
-    @JsonBackReference
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
 
     /**
      * Adds fields which are not populated by Invoice DTO.

@@ -34,15 +34,14 @@ public class Customer {
     @Column(name= "phone", nullable = false)
     private Integer customerPhone;
 
-    @OneToMany(mappedBy="customer", fetch = FetchType.LAZY, cascade=CascadeType.ALL, orphanRemoval=true)
-    private List<Invoice> customerInvoice = new ArrayList<>();
-
     @Column(name = "status", nullable = false)
     @Enumerated(EnumType.ORDINAL)
     private ModelStatus customerStatus;
 
+    @OneToMany(mappedBy="customer", fetch = FetchType.LAZY, cascade=CascadeType.ALL, orphanRemoval=true)
+    private List<Invoice> customerInvoice = new ArrayList<>();
 
-    @JsonManagedReference
+
     public List<Invoice> getCustomerInvoice() {
         return customerInvoice;
     }

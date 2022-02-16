@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-02-15T21:41:37-0600",
+    date = "2022-02-16T15:44:19-0600",
     comments = "version: 1.4.1.Final, compiler: javac, environment: Java 11.0.13 (Oracle Corporation)"
 )
 @Component
@@ -24,12 +24,9 @@ public class InvoiceDetailsMapperImpl implements InvoiceDetailsMapper {
 
         InvoiceDetails invoiceDetails = new InvoiceDetails();
 
-        invoiceDetails.setInvoice( dto.getInvoice() );
-        invoiceDetails.setProduct( dto.getProduct() );
         invoiceDetails.setInvoiceDetailStatus( dto.getInvoiceDetailStatus() );
         invoiceDetails.setInvoiceDetailId( dto.getInvoiceDetailId() );
         invoiceDetails.setInvoiceDetailAmount( dto.getInvoiceDetailAmount() );
-        invoiceDetails.setInvoiceDetailPrice( dto.getInvoiceDetailPrice() );
         invoiceDetails.setInvoiceDetailTotalParcial( dto.getInvoiceDetailTotalParcial() );
         invoiceDetails.setInvoiceDetailIsv( dto.getInvoiceDetailIsv() );
         invoiceDetails.setInvoiceDetailDiscount( dto.getInvoiceDetailDiscount() );
@@ -47,10 +44,7 @@ public class InvoiceDetailsMapperImpl implements InvoiceDetailsMapper {
         InvoiceDetailsDtoBuilder invoiceDetailsDto = InvoiceDetailsDto.builder();
 
         invoiceDetailsDto.invoiceDetailId( invoiceDetails.getInvoiceDetailId() );
-        invoiceDetailsDto.invoice( invoiceDetails.getInvoice() );
-        invoiceDetailsDto.product( invoiceDetails.getProduct() );
         invoiceDetailsDto.invoiceDetailAmount( invoiceDetails.getInvoiceDetailAmount() );
-        invoiceDetailsDto.invoiceDetailPrice( invoiceDetails.getInvoiceDetailPrice() );
         invoiceDetailsDto.invoiceDetailTotalParcial( invoiceDetails.getInvoiceDetailTotalParcial() );
         invoiceDetailsDto.invoiceDetailIsv( invoiceDetails.getInvoiceDetailIsv() );
         invoiceDetailsDto.invoiceDetailDiscount( invoiceDetails.getInvoiceDetailDiscount() );
