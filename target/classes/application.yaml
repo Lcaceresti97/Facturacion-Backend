@@ -11,5 +11,5 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/db_facturacion
     username: root
-    password: root
+    password: admin
     driver-class-name: com.mysql.cj.jdbc.Driver

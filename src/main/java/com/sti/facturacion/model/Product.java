@@ -30,23 +30,9 @@ public class Product {
     @Column(name = "stock", nullable = false)
     private Integer productStock;
 
-    //@OneToMany(mappedBy="product", fetch = FetchType.LAZY, cascade=CascadeType.ALL, orphanRemoval=true)
-   // private List<InvoiceDetails> productInvoiceDetails = new ArrayList<>();
-
-
     @Column(name = "status" , nullable = false)
     @Enumerated(EnumType.ORDINAL)
     private ModelStatus productStatus;
-
-    /**
-    @JsonManagedReference
-    public List<InvoiceDetails> getProductInvoiceDetails() {
-        return productInvoiceDetails;
-    }
-
-    public void setProductInvoiceDetails(List<InvoiceDetails> productInvoiceDetails) {
-        this.productInvoiceDetails = productInvoiceDetails;
-    }
 
     /**
      * Adds fields which are not populated by Product DTO.

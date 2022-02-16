@@ -3,6 +3,7 @@ package com.sti.facturacion.model.mappers;
 import com.sti.facturacion.dto.InvoiceDto;
 import com.sti.facturacion.dto.InvoiceDto.InvoiceDtoBuilder;
 import com.sti.facturacion.model.Invoice;
+import com.sti.facturacion.model.InvoiceDetails;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-02-15T15:40:45-0600",
+    date = "2022-02-15T21:41:37-0600",
     comments = "version: 1.4.1.Final, compiler: javac, environment: Java 11.0.13 (Oracle Corporation)"
 )
 @Component
@@ -24,6 +25,10 @@ public class InvoiceMapperImpl implements InvoiceMapper {
 
         Invoice invoice = new Invoice();
 
+        List<InvoiceDetails> list = dto.getInvoiceDetailsList();
+        if ( list != null ) {
+            invoice.setInvoiceDetailsList( new ArrayList<InvoiceDetails>( list ) );
+        }
         invoice.setCustomer( dto.getCustomer() );
         invoice.setInvoiceStatus( dto.getInvoiceStatus() );
         invoice.setInvoiceCode( dto.getInvoiceCode() );
@@ -45,6 +50,10 @@ public class InvoiceMapperImpl implements InvoiceMapper {
         invoiceDto.registDateInvoice( invoice.getRegistDateInvoice() );
         invoiceDto.customer( invoice.getCustomer() );
         invoiceDto.invoiceStatus( invoice.getInvoiceStatus() );
+        List<InvoiceDetails> list = invoice.getInvoiceDetailsList();
+        if ( list != null ) {
+            invoiceDto.invoiceDetailsList( new ArrayList<InvoiceDetails>( list ) );
+        }
 
         return invoiceDto.build();
     }

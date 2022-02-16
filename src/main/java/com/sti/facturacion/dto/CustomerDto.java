@@ -47,4 +47,5 @@ public class CustomerDto {
     @JsonProperty("customerInvoice")
     @Builder.Default
     private List<Invoice> customerInvoice = new ArrayList<>();
+
 }

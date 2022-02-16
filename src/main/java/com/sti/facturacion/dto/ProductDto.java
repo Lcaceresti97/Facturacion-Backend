@@ -40,8 +40,4 @@ public class ProductDto {
     @JsonProperty("status")
     private ModelStatus productStatus;
 
-   // @JsonProperty("productInvoiceDetails")
-//@Builder.Default
-//private List<InvoiceDetails> productInvoiceDetails = new ArrayList<>();
-
 }

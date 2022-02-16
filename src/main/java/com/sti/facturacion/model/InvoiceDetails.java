@@ -3,6 +3,7 @@ package com.sti.facturacion.model;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sti.facturacion.model.status.ModelStatus;
 import lombok.*;
@@ -21,14 +22,15 @@ import java.util.UUID;
 public class InvoiceDetails {
 
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_invoice_detail", nullable = false, unique = true , length = 64)
     private String invoiceDetailId;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_invoice")
     private Invoice invoice;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_product")
     private Product product;
@@ -55,6 +57,17 @@ public class InvoiceDetails {
     @Enumerated(EnumType.ORDINAL)
     private ModelStatus invoiceDetailStatus;
 
+    @JsonIgnore
+    @JsonBackReference
+    public Invoice getInvoice() {
+        return invoice;
+    }
+
+    public void setInvoice(Invoice invoice) {
+        this.invoice = invoice;
+    }
+
+    @JsonIgnore
     @JsonBackReference
     public Product getProduct() {
         return product;

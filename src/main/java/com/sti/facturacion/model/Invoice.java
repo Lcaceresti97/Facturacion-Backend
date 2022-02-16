@@ -7,9 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sti.facturacion.model.status.ModelStatus;
 import lombok.*;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.UUID;
+import java.util.*;
 
 @Entity
 @Table(name = "t_invoice")
@@ -21,7 +19,6 @@ import java.util.UUID;
 public class Invoice {
 
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_invoice", nullable = false, unique = true, length = 64)
     private String invoiceId;
 
@@ -32,6 +29,9 @@ public class Invoice {
     @JoinColumn(name = "id_customer")
     private Customer customer;
 
+    @OneToMany(mappedBy="invoice", fetch = FetchType.LAZY, cascade=CascadeType.ALL, orphanRemoval=true)
+    private List<InvoiceDetails> invoiceDetailsList = new ArrayList<>();
+
     @Column(name = "regist_date", nullable = false)
     @Temporal(TemporalType.DATE)
     private Date registDateInvoice;
@@ -40,6 +40,14 @@ public class Invoice {
     @Enumerated(EnumType.ORDINAL)
     private ModelStatus invoiceStatus;
 
+    @JsonBackReference
+    public List<InvoiceDetails> getInvoiceDetailsList() {
+        return invoiceDetailsList;
+    }
+
+    public void setInvoiceDetailsList(List<InvoiceDetails> invoiceDetailsList) {
+        this.invoiceDetailsList = invoiceDetailsList;
+    }
 
     @JsonBackReference
     public Customer getCustomer() {

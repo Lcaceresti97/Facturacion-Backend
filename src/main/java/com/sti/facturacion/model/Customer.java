@@ -22,7 +22,6 @@ import lombok.*;
 public class Customer {
 
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_customer", nullable = false, unique = true , length = 64)
     private String customerId;
 

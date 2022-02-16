@@ -64,27 +64,6 @@ public class CustomerController {
                 customerDtoPage.getTotalPages(), customerDtoPage.getNumber(), customerDtoPage.getContent());
     }
 
-
-    /**
-     * Handler method for fetching a single Customer by its ID.
-     * @param customerId String
-     * @return ResponseEntity Customer
-     */
-    @Operation(description = "Find a customer by its ID.", operationId = "findByCustomerId")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Customer retrieved successfully"
-                    , content = { @Content(mediaType = MediaType.APPLICATION_JSON_VALUE
-                    , schema = @Schema(implementation =  CustomerDto.class))})
-            , @ApiResponse(responseCode = "404", description = "Customer not found"
-            , content = { @Content(schema = @Schema(implementation = ErrorResponse.class))})
-    })
-    @GetMapping(value = "/{customerId}")
-    public ResponseEntity<? extends CustomerDto> findByCustomerId(@PathVariable final String customerId) {
-        CustomerDto retrievedCustomer = customerService.findCustomerById(customerId);
-        return new ResponseEntity<>(retrievedCustomer, HttpStatus.OK);
-    }
-
-
     @Operation(summary = "Save given Customer.", operationId = "saveCustomer")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201",  description = "Customer saved successfully"
