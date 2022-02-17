@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.sti.facturacion.model.Customer;
 import com.sti.facturacion.model.Invoice;
 import com.sti.facturacion.model.InvoiceDetails;
 import com.sti.facturacion.model.Product;
@@ -21,9 +22,11 @@ import java.util.List;
 @JsonSerialize
 @Builder
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class InvoiceDetailsDto {
+
 
     @JsonProperty("id_invoice_detail")
     private String invoiceDetailId;
@@ -44,7 +47,6 @@ public class InvoiceDetailsDto {
     private Double invoiceDetailIsv;
 
     @JsonProperty(required = true)
-    @Positive
     @NotNull
     private Double invoiceDetailDiscount;
 
@@ -56,7 +58,7 @@ public class InvoiceDetailsDto {
     @JsonProperty("status")
     private ModelStatus invoiceDetailStatus;
 
-    @JsonProperty("invoiceDetailsProduct")
-    private List<Product> invoiceDetailsProduct = new ArrayList<>();
+    @JsonProperty("product")
+    private Product product;
 
 }

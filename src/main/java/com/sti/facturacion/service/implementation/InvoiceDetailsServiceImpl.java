@@ -2,6 +2,7 @@ package com.sti.facturacion.service.implementation;
 
 import com.sti.facturacion.dto.InvoiceDetailsDto;
 import com.sti.facturacion.dto.InvoiceDto;
+import com.sti.facturacion.model.InvoiceDetails;
 import com.sti.facturacion.model.mappers.InvoiceDetailsMapper;
 import com.sti.facturacion.repository.InvoiceDetailsRepository;
 import com.sti.facturacion.service.InvoiceDetailsService;
@@ -22,6 +23,13 @@ public class InvoiceDetailsServiceImpl implements InvoiceDetailsService {
     private final InvoiceDetailsMapper invoiceDetailsMapper;
 
     private final SortingPagingUtils sortingPagingUtils;
+
+    @Override
+    public InvoiceDetailsDto saveInvoiceDetails(InvoiceDetailsDto invoiceDetailsDto) {
+        InvoiceDetails invoiceDetails = InvoiceDetails.buildFromDtoInvoiceDetails(this.invoiceDetailsMapper.dtoToInvoiceDetails(invoiceDetailsDto));
+        this.invoiceDetailsRepository.save(invoiceDetails);
+        return invoiceDetailsMapper.invoiceDetailsToDto(invoiceDetails);
+    }
 
     @Override
     public Page<InvoiceDetailsDto> findPaginatedSortedInvoicesDetails(String search, int page, int size, String[] sort) {

@@ -6,6 +6,8 @@ import org.springframework.data.domain.Page;
 
 public interface InvoiceDetailsService {
 
+    InvoiceDetailsDto saveInvoiceDetails(InvoiceDetailsDto invoiceDetailsDto);
+
     /**
      * Return a page of sorted invoices.
      * @param search Invoice hasta to sort by.

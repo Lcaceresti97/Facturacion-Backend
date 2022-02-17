@@ -32,7 +32,7 @@ public class ProductDto {
     @Size(min = 2, max = 100)
     private String productName;
 
-    @JsonProperty(required = true)
+    @JsonProperty
     @Positive
     @NotNull
     private Double invoiceDetailPrice;
