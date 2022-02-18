@@ -85,24 +85,6 @@ public class CustomerServiceImpl implements CustomerService {
         customerRepository.save(customer);
     }
 
-    @Override
-    public void addInvoiceToCustomer(String customerId, InvoiceDto invoiceDto) {
-
-        Customer customer = customerMapper
-                .dtoToCustomer(findCustomerById(customerId));
-        Invoice invoice;
-        if(invoiceService.invoiceExists(invoiceDto.getInvoiceCode())){
-            invoice = invoiceMapper
-                    .dtoToInvoice(invoiceService
-                            .findInvoiceById(invoiceDto.getInvoiceId()));
-        }
-        else{
-            invoice = invoiceMapper
-                    .dtoToInvoice(invoiceDto);
-        }
-        customer.addInvoice(invoice);
-        customerRepository.save(customer);
-    }
 
     /**
      * Return customer if status code is ACTIVE.

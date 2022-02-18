@@ -3,6 +3,7 @@ package com.sti.facturacion.model.mappers;
 import com.sti.facturacion.dto.ProductDto;
 import com.sti.facturacion.dto.ProductDto.ProductDtoBuilder;
 import com.sti.facturacion.model.Product;
+import com.sti.facturacion.model.Product.ProductBuilder;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-02-17T15:49:26-0600",
+    date = "2022-02-18T15:42:18-0600",
     comments = "version: 1.4.1.Final, compiler: javac, environment: Java 11.0.13 (Oracle Corporation)"
 )
 @Component
@@ -22,13 +23,15 @@ public class ProductMapperImpl implements ProductMapper {
             return null;
         }
 
-        Product product = new Product();
+        ProductBuilder product = Product.builder();
 
-        product.setProductStatus( dto.getProductStatus() );
-        product.setProductName( dto.getProductName() );
-        product.setProductStock( dto.getProductStock() );
+        product.productId( dto.getProductId() );
+        product.productName( dto.getProductName() );
+        product.productPrice( dto.getProductPrice() );
+        product.productStock( dto.getProductStock() );
+        product.productStatus( dto.getProductStatus() );
 
-        return product;
+        return product.build();
     }
 
     @Override
@@ -41,6 +44,7 @@ public class ProductMapperImpl implements ProductMapper {
 
         productDto.productId( product.getProductId() );
         productDto.productName( product.getProductName() );
+        productDto.productPrice( product.getProductPrice() );
         productDto.productStock( product.getProductStock() );
         productDto.productStatus( product.getProductStatus() );
 

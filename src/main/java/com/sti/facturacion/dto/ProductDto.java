@@ -32,10 +32,10 @@ public class ProductDto {
     @Size(min = 2, max = 100)
     private String productName;
 
-    @JsonProperty
+    @JsonProperty("price")
     @Positive
     @NotNull
-    private Double invoiceDetailPrice;
+    private Double productPrice;
 
     @JsonProperty("stock")
     @Positive

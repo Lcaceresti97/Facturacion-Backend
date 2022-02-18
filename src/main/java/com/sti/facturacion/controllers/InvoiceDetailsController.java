@@ -40,8 +40,6 @@ public class InvoiceDetailsController {
 
     private  final InvoiceDetailsService invoiceDetailsService ;
 
-    private  final ProductService productService;
-
     /**
      * Get Paginated sorted InvoiceDetails with given criteria.
      *

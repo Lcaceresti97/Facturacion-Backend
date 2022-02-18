@@ -28,7 +28,6 @@ public interface CustomerService {
 
     Page<CustomerDto> findPaginatedSortedCustomer(String customerId, int page, int size, String[] sort);
 
-    void addInvoiceToCustomer(String customerId, InvoiceDto invoiceDto);
 
 
 }

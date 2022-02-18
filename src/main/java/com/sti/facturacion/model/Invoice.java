@@ -51,7 +51,6 @@ public class Invoice {
     }
 
     @JsonIgnore
-    @JsonBackReference
     public Customer getCustomer() {
         return customer;
     }
